@@ -1,15 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<style>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Bounce game</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
 canvas {
     border:1px solid #d3d3d3;
     background-color: #f1f1f1;
+
+position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin:auto;
+  
+
+
 }
-</style>
-</head>
-<body onload="startGame()">
+a
+{
+color:white;
+}
+  body {
+    
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+  .bg-1 { 
+    background-color: #1abc9c; /* Green */
+    color: #ffffff;
+  }
+  .bg-2 { 
+    background-color: #474e5d; /* Dark Blue */
+    color: #ffffff;
+  }
+  .bg-3 { 
+    background-color: #ffffff; /* White */
+    color: #555555;
+  }
+  .bg-4 { 
+    background-color: #2f2f2f; /* Black Gray */
+    color: #fff;
+  }
+  .container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+    color: #1abc9c !important;
+  }
+  </style>
 <script>
 
 var myGamePiece;
@@ -20,12 +77,13 @@ function startGame() {
     myGamePiece = new component(30, 30, "red", 10, 120);
     myGamePiece.gravity = 0.05;
     myScore = new component("30px", "Consolas", "black", 280, 40, "text");
-    myGameArea.start();
+   myGameArea.start();
 }
 
 var myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
+
         this.canvas.width = 480;
         this.canvas.height = 270;
         this.context = this.canvas.getContext("2d");
@@ -36,7 +94,25 @@ var myGameArea = {
     clear : function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
+
+
 }
+var myResume = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 480;
+        this.canvas.height = 270;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        
+        },
+    clear : function() {
+        
+    }
+
+
+}
+
 
 function component(width, height, color, x, y, type) {
     this.type = type;
@@ -94,7 +170,10 @@ function updateGameArea() {
     var x, height, gap, minHeight, maxHeight, minGap, maxGap;
     for (i = 0; i < myObstacles.length; i += 1) {
         if (myGamePiece.crashWith(myObstacles[i])) {
+
+document.getElementById("score").innerHTML =" Your score is " +myGameArea.frameNo ;
             return;
+
         } 
     }
     myGameArea.clear();
@@ -129,9 +208,45 @@ function accelerate(n) {
     myGamePiece.gravity = n;
 }
 </script>
+</head>
+<body >
+<div class="container">
+  <div class="jumbotron">
+    <h1>Bouncing Ball Game</h1>      
+    
+  </div>
+     
+
+ <button class="btn btn-primary btn-block" onclick="startGame()">Start</button>
+
 <br>
-<button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
-<p>Use the ACCELERATE button to stay in the air</p>
-<p>How long can you stay alive?</p>
+
+<button class="btn btn-primary btn-block" onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">Bounce</button>
+
+
+<br>
+<br>
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+<button class="btn btn-primary btn-block"><a href="index.html">Play Again</a></button>
+
+<a href="index.html">Play Again</a>
+<center>
+<p id="score">
+</p>
+</center>
+<footer class="container-fluid bg-4 text-center">
+  <p>Game Made By Simranjeet Randhawa</p> 
+</footer>
+</div>
+
 </body>
 </html>
+
+
+
+
+
+
