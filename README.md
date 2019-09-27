@@ -1,6 +1,3 @@
-# Tiny-Game
- 
- 
- ## Avaiable on 
- https://ssrbazpur.github.io/Tiny-Game/.
- (Still under construction)
+# flappy
+Flappy Bird Coding Challenge
+Uploaded
